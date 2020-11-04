@@ -1,0 +1,17 @@
+name: "Yay internet!"
+output_dir: "."
+navbar:
+  title: "Home"
+  right:
+    - text: "About"
+      href: about.html
+    - icon: fa-envelope fa-lg
+      href: mailto:<sp3804@cumc.columbia.edu>
+    - icon: fa-github fa-lg
+      href: http://github.com/<Shannon723>/
+    - text: "Linkedin"
+      href: https://www.linkedin.com/in/shannon-seonyoung-park-74b097196
+      
+output:
+  html_document:
+  
