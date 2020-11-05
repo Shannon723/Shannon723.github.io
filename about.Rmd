@@ -8,4 +8,14 @@ output:
 
 # This page has information about me
 
-I am taking p8105. 
+<img src="IMG_4201.jpg" style="width:30%; border:10px solid; margin-right: 20px"align="left">
+
+
+This is Shannon Park, and I am currently a second-year MPH student at Columbia University, majoring in Environmental Health Sciences with Applied Biostatistics specialization. 
+
+<Current projects>
+
+I’m currently working at Columbia Children's Environmental Health Cencer with Prof. Julie Herbstman on a project to investigate the association between prenatal and early childhood exposure to polybrominated diphenyl ether (PBDE)—a commonly used flame retardant—on executive function during adolescence. 
+
+Also, I'm starting my master thesis research with Prof. Markus Hilpert for the project "The Impact of COVID-19 Pandemic on New York State Ambient Air Quality". It aims to see the change in air pollution (PM2.5, NO2, and O3) in New York State along different lockdown phase. 
+
