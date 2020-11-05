@@ -18,8 +18,7 @@ library(labelled)
 ```{r}
 data("instacart")
 instacart = instacart %>%
-  filter(department=="snacks") 
-
+  filter(department=="snacks") %>%
 ```
 
 “The Instacart Online Grocery Shopping Dataset 2017” is an anonymized dataset with over 3 million online grocery orders from more than 200,000 Instacart users. However the dataset does not represent a random sampling of products, users, or purchases. Therefore, while the data allow examination of trends in online grocery purchasing, the results may not be generalizable to Instacart users more broadly.
@@ -35,8 +34,8 @@ instacart %>%
 
 Based on the the plot, stuffs from the "chips pretzels' aisle have been sold the most.  "Ice cream toppings" corner was the least sold category/aisle. 
 
-* Q: From which aisle people usually start shopping? (From which aisle people usually add stuffs to chart?)
-* graph of add to chart order vs. aisle.
+
+* Is the order number of product (the frequency purchase) associated with the order it added to cart?
 
 ```{r}
 instacart %>%
@@ -46,7 +45,8 @@ instacart %>%
 
 ```
 
-At first, I expected people add the stuffs that they've order many times first. But, based on the graph, it doesn't seem there is an noticeable association between order number and add to cart order. 
+At first, I expected people add the stuffs that they've ordered many times before first. But, based on the graph, it doesn't seem there is an noticeable association between the frequency of previous purchase and the order product added to cart.
+
 
 * Which snacks are purchased more than 500 times? and Is there any difference in purchase pattern? (e.g. the day of week the snack sold the most)
 
@@ -64,15 +64,4 @@ instacart %>%
   plot_ly(y = ~order_dow, color = ~product_name, type = "box", text= ~n)
 ```
 
-Among 13 snakcs purchased more than 500 times, Original Veggie Straws and Trail Mix show different from the others; Original Veggie Straws were mainly purchased between Sunday to Thursday. Trail Mix were mainly purchased between Monday to Thursday. 
-
-
-
-* Is the number of total
-
-* Healthier snacks and staples tend to be purchased earlier in the day
-
- 
-
-
-
+A: Among the 13 snakcs purchased more than 500 times, Original Veggie Straws and Trail Mix show different pattern from the others. In general, snacks are purchased from Monday to Friday, with Wednesday as median. However, Original Veggie Straws were mainly purchased between Sunday to Thursday. Also, Trail Mix were mainly purchased between Monday to Thursday. 
