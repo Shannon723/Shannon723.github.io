@@ -2,8 +2,7 @@
 title: "HW5-Q2-Plotly"
 output: 
   flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: fill
+    vertical_layout: scroll
     source: embed
 ---
 
@@ -24,7 +23,6 @@ instacart = instacart %>%
 
 ```
 
-Column {data-width=650}
 -----------------------------------------------------------------------
 
 ### Chart A
@@ -36,7 +34,6 @@ instacart %>%
   plot_ly(x = ~aisle, y = ~n, color = ~aisle, type = "bar", colors = "viridis")
 ```
 
-Column {data-width=350}
 -----------------------------------------------------------------------
 
 ### Chart B
@@ -64,3 +61,4 @@ instacart %>%
 
 ```
 
+rmarkdown::render("HW5_Q2_Dashboard.Rmd", output_format = "flexdashboard::flex_dashboard")
