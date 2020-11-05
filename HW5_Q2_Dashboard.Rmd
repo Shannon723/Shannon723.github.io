@@ -4,10 +4,24 @@ output:
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
+    source: embed
 ---
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+library(labelled)
+```
+
+“The Instacart Online Grocery Shopping Dataset 2017”, Accessed from https://www.instacart.com/datasets/grocery-shopping-2017 on June 24, 2017.
+
+```{r}
+data("instacart")
+instacart = instacart %>%
+  filter(department=="snacks") 
+
 ```
 
 Column {data-width=650}
@@ -16,7 +30,10 @@ Column {data-width=650}
 ### Chart A
 
 ```{r}
-
+instacart %>% 
+  count(aisle) %>% 
+  mutate(aisle = fct_reorder(aisle, n)) %>% 
+  plot_ly(x = ~aisle, y = ~n, color = ~aisle, type = "bar", colors = "viridis")
 ```
 
 Column {data-width=350}
@@ -25,12 +42,25 @@ Column {data-width=350}
 ### Chart B
 
 ```{r}
-
+instacart %>%
+  plot_ly(
+    x = ~order_number, y = ~add_to_cart_order, type= "scatter", color=~aisle)
 ```
 
 ### Chart C
 
 ```{r}
+instacart_snack = instacart %>% 
+  count(product_name) %>% 
+  mutate(product_name = fct_reorder(product_name,n)) 
+instacart = 
+  left_join(instacart, instacart_snack)
+
+instacart %>%
+  filter(n>500) %>%
+  set_value_labels(order_dow =c("Sun"=0, "Mon"=1, "Tue"=2, "Wed"=3, "Thr"=4, "Fri"=5, "Sat"=6)) %>%
+  mutate_if(is.labelled, to_factor) %>%
+  plot_ly(y = ~order_dow, color = ~product_name, type = "box", text= ~n)
 
 ```
 
