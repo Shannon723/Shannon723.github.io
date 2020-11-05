@@ -1,0 +1,78 @@
+---
+title: "HW5_Q2_Plotly"
+author: "Seonyoung Park (sp3804)"
+date: "11/4/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+library(labelled)
+```
+
+
+“The Instacart Online Grocery Shopping Dataset 2017”, Accessed from https://www.instacart.com/datasets/grocery-shopping-2017 on June 24, 2017.
+
+```{r}
+data("instacart")
+instacart = instacart %>%
+  filter(department=="snacks") 
+
+```
+
+“The Instacart Online Grocery Shopping Dataset 2017” is an anonymized dataset with over 3 million online grocery orders from more than 200,000 Instacart users. However the dataset does not represent a random sampling of products, users, or purchases. Therefore, while the data allow examination of trends in online grocery purchasing, the results may not be generalizable to Instacart users more broadly.
+
+* How different the sales are along each aisle? 
+```{r}
+instacart %>% 
+  count(aisle) %>% 
+  mutate(aisle = fct_reorder(aisle, n)) %>% 
+  plot_ly(x = ~aisle, y = ~n, color = ~aisle, type = "bar", colors = "viridis")
+
+```
+
+Based on the the plot, stuffs from the "chips pretzels' aisle have been sold the most.  "Ice cream toppings" corner was the least sold category/aisle. 
+
+* Q: From which aisle people usually start shopping? (From which aisle people usually add stuffs to chart?)
+* graph of add to chart order vs. aisle.
+
+```{r}
+instacart %>%
+  plot_ly(
+    x = ~order_number, y = ~add_to_cart_order, type= "scatter", color=~aisle)
+
+
+```
+
+At first, I expected people add the stuffs that they've order many times first. But, based on the graph, it doesn't seem there is an noticeable association between order number and add to cart order. 
+
+* Which snacks are purchased more than 500 times? and Is there any difference in purchase pattern? (e.g. the day of week the snack sold the most)
+
+```{r}
+instacart_snack = instacart %>% 
+  count(product_name) %>% 
+  mutate(product_name = fct_reorder(product_name,n)) 
+instacart = 
+  left_join(instacart, instacart_snack)
+
+instacart %>%
+  filter(n>500) %>%
+  set_value_labels(order_dow =c("Sun"=0, "Mon"=1, "Tue"=2, "Wed"=3, "Thr"=4, "Fri"=5, "Sat"=6)) %>%
+  mutate_if(is.labelled, to_factor) %>%
+  plot_ly(y = ~order_dow, color = ~product_name, type = "box", text= ~n)
+```
+
+Among 13 snakcs purchased more than 500 times, Original Veggie Straws and Trail Mix show different from the others; Original Veggie Straws were mainly purchased between Sunday to Thursday. Trail Mix were mainly purchased between Monday to Thursday. 
+
+
+
+* Is the number of total
+
+* Healthier snacks and staples tend to be purchased earlier in the day
+
+ 
+
+
+

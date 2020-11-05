@@ -4,12 +4,12 @@ output:
   html_document:
       toc: true
       toc_float: true
-      css: bootstrap.min.css
-    
 ---
 
-# This is Shannon Park's website
+# Shannon Park, 2021 MPH Candidate 
 
-![](IMG_4201.jpg)
+<img src="IMG_4201.jpg" style="width:30%; border:10px solid; margin-right: 20px"align="left">
 
-## 
+This is Shannon Park, and I am currently a second-year MPH student at Columbia University, majoring in Environmental Health Sciences with Applied Biostatistics specialization. 
+
+I’m currently working at Columbia Children's Environmental Health Cencer with Prof. Julie Herbstman on a project to investigate the association between prenatal and early childhood exposure to polybrominated diphenyl ether (PBDE)—a commonly used flame retardant—on executive function during adolescence. I want to be an influential environmental epidemiologist and lead research to find an association between pediatric health outcomes and exposure to various chemicals, including plasticizers, endocrine-disrupting chemicals, flame retardants, etc., by joining the PhD program in future. 

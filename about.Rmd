@@ -2,10 +2,8 @@
 title: "About me"
 output: 
   html_document:
-    css: bootstrap.min.css
     toc: true
     toc_float: true
-    
 ---
 
 # This page has information about me
